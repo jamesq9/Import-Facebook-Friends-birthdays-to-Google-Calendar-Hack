@@ -29,6 +29,6 @@ var year = "2019";
 
 Step 3: visit https://www.facebook.com/events/birthdays/ and scroll down the page until no new birthdays load. 
 
-Step 4: Press F12 -> goto Console tab -> paste the edited code from your favourite editor and click Enter and save the 'fb_birthday_cal_maker' file.
+Step 4: Press F12 -> goto Console tab -> paste the edited code from your favourite editor and click Enter and save the 'fb_birthday_cal_maker.ics' file.
 
 Step 5: Import those events to any calender of your choice. 
