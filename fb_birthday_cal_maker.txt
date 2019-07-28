@@ -1,0 +1,70 @@
+// update this map as per your current day, Enter when is your next monday, tuesday etc.. MM/dd
+var map = {
+	"monday":"07/29",
+	"tuesday":"07/30",
+	"wednesday":"07/31",
+	"thursday":"08/01",
+	"friday":"08/02",
+	"saturday":"08/03",
+	"sunday": "08/04"
+	};
+
+// update the current year in which your living below. (Request the time travelers to check your calendar and verfiy that the value you entered is correct )
+var year = "2019";
+
+
+// that's all the changes you had to do :)
+
+// https://github.com/eligrey/FileSaver.js/blob/master/src/FileSaver.js
+/*
+* FileSaver.js
+* A saveAs() FileSaver implementation.
+*
+* By Eli Grey, http://eligrey.com
+*
+* License : https://github.com/eligrey/FileSaver.js/blob/master/LICENSE.md (MIT)
+* source  : http://purl.eligrey.com/github/FileSaver.js
+*/
+var _global="object"==typeof window&&window.window===window?window:"object"==typeof self&&self.self===self?self:"object"==typeof global&&global.global===global?global:this;function bom(e,o){return void 0===o?o={autoBom:!1}:"object"!=typeof o&&(console.warn("Deprecated: Expected third argument to be a object"),o={autoBom:!o}),o.autoBom&&/^\s*(?:text\/\S*|application\/xml|\S*\/\S*\+xml)\s*;.*charset\s*=\s*utf-8/i.test(e.type)?new Blob([String.fromCharCode(65279),e],{type:e.type}):e}function download(e,o,t){var n=new XMLHttpRequest;n.open("GET",e),n.responseType="blob",n.onload=function(){saveAs(n.response,o,t)},n.onerror=function(){console.error("could not download file")},n.send()}function corsEnabled(e){var o=new XMLHttpRequest;o.open("HEAD",e,!1);try{o.send()}catch(e){}return o.status>=200&&o.status<=299}function click(e){try{e.dispatchEvent(new MouseEvent("click"))}catch(t){var o=document.createEvent("MouseEvents");o.initMouseEvent("click",!0,!0,window,0,0,0,80,20,!1,!1,!1,!1,0,null),e.dispatchEvent(o)}}var saveAs=_global.saveAs||("object"!=typeof window||window!==_global?function(){}:"download"in HTMLAnchorElement.prototype?function(e,o,t){var n=_global.URL||_global.webkitURL,a=document.createElement("a");o=o||e.name||"download",a.download=o,a.rel="noopener","string"==typeof e?(a.href=e,a.origin!==location.origin?corsEnabled(a.href)?download(e,o,t):click(a,a.target="_blank"):click(a)):(a.href=n.createObjectURL(e),setTimeout(function(){n.revokeObjectURL(a.href)},4e4),setTimeout(function(){click(a)},0))}:"msSaveOrOpenBlob"in navigator?function(e,o,t){if(o=o||e.name||"download","string"==typeof e)if(corsEnabled(e))download(e,o,t);else{var n=document.createElement("a");n.href=e,n.target="_blank",setTimeout(function(){click(n)})}else navigator.msSaveOrOpenBlob(bom(e,t),o)}:function(e,o,t,n){if((n=n||open("","_blank"))&&(n.document.title=n.document.body.innerText="downloading..."),"string"==typeof e)return download(e,o,t);var a="application/octet-stream"===e.type,l=/constructor/i.test(_global.HTMLElement)||_global.safari,i=/CriOS\/[\d]+/.test(navigator.userAgent);if((i||a&&l)&&"undefined"!=typeof FileReader){var r=new FileReader;r.onloadend=function(){var e=r.result;e=i?e:e.replace(/^data:[^;]*;/,"data:attachment/file;"),n?n.location.href=e:location=e,n=null},r.readAsDataURL(e)}else{var c=_global.URL||_global.webkitURL,s=c.createObjectURL(e);n?n.location=s:location.href=s,n=null,setTimeout(function(){c.revokeObjectURL(s)},4e4)}});_global.saveAs=saveAs.saveAs=saveAs,"undefined"!=typeof module&&(module.exports=saveAs);
+
+// https://github.com/nwcell/ics.js/blob/master/ics.min.js
+/*! ics.js Wed Sept 14 2017 */
+var ics=function(e,t){"use strict";{if(!(navigator.userAgent.indexOf("MSIE")>-1&&-1==navigator.userAgent.indexOf("MSIE 10"))){void 0===e&&(e="default"),void 0===t&&(t="Calendar");var r=-1!==navigator.appVersion.indexOf("Win")?"\r\n":"\n",n=[],i=["BEGIN:VCALENDAR","PRODID:"+t,"VERSION:2.0"].join(r),o=r+"END:VCALENDAR",a=["SU","MO","TU","WE","TH","FR","SA"];return{events:function(){return n},calendar:function(){return i+r+n.join(r)+o},addEvent:function(t,i,o,l,u,s){if(void 0===t||void 0===i||void 0===o||void 0===l||void 0===u)return!1;if(s&&!s.rrule){if("YEARLY"!==s.freq&&"MONTHLY"!==s.freq&&"WEEKLY"!==s.freq&&"DAILY"!==s.freq)throw"Recurrence rrule frequency must be provided and be one of the following: 'YEARLY', 'MONTHLY', 'WEEKLY', or 'DAILY'";if(s.until&&isNaN(Date.parse(s.until)))throw"Recurrence rrule 'until' must be a valid date string";if(s.interval&&isNaN(parseInt(s.interval)))throw"Recurrence rrule 'interval' must be an integer";if(s.count&&isNaN(parseInt(s.count)))throw"Recurrence rrule 'count' must be an integer";if(void 0!==s.byday){if("[object Array]"!==Object.prototype.toString.call(s.byday))throw"Recurrence rrule 'byday' must be an array";if(s.byday.length>7)throw"Recurrence rrule 'byday' array must not be longer than the 7 days in a week";s.byday=s.byday.filter(function(e,t){return s.byday.indexOf(e)==t});for(var c in s.byday)if(a.indexOf(s.byday[c])<0)throw"Recurrence rrule 'byday' values must include only the following: 'SU', 'MO', 'TU', 'WE', 'TH', 'FR', 'SA'"}}var g=new Date(l),d=new Date(u),f=new Date,S=("0000"+g.getFullYear().toString()).slice(-4),E=("00"+(g.getMonth()+1).toString()).slice(-2),v=("00"+g.getDate().toString()).slice(-2),y=("00"+g.getHours().toString()).slice(-2),A=("00"+g.getMinutes().toString()).slice(-2),T=("00"+g.getSeconds().toString()).slice(-2),b=("0000"+d.getFullYear().toString()).slice(-4),D=("00"+(d.getMonth()+1).toString()).slice(-2),N=("00"+d.getDate().toString()).slice(-2),h=("00"+d.getHours().toString()).slice(-2),I=("00"+d.getMinutes().toString()).slice(-2),R=("00"+d.getMinutes().toString()).slice(-2),M=("0000"+f.getFullYear().toString()).slice(-4),w=("00"+(f.getMonth()+1).toString()).slice(-2),L=("00"+f.getDate().toString()).slice(-2),O=("00"+f.getHours().toString()).slice(-2),p=("00"+f.getMinutes().toString()).slice(-2),Y=("00"+f.getMinutes().toString()).slice(-2),U="",V="";y+A+T+h+I+R!=0&&(U="T"+y+A+T,V="T"+h+I+R);var B,C=S+E+v+U,j=b+D+N+V,m=M+w+L+("T"+O+p+Y);if(s)if(s.rrule)B=s.rrule;else{if(B="rrule:FREQ="+s.freq,s.until){var x=new Date(Date.parse(s.until)).toISOString();B+=";UNTIL="+x.substring(0,x.length-13).replace(/[-]/g,"")+"000000Z"}s.interval&&(B+=";INTERVAL="+s.interval),s.count&&(B+=";COUNT="+s.count),s.byday&&s.byday.length>0&&(B+=";BYDAY="+s.byday.join(","))}(new Date).toISOString();var H=["BEGIN:VEVENT","UID:"+n.length+"@"+e,"CLASS:PUBLIC","DESCRIPTION:"+i,"DTSTAMP;VALUE=DATE-TIME:"+m,"DTSTART;VALUE=DATE-TIME:"+C,"DTEND;VALUE=DATE-TIME:"+j,"LOCATION:"+o,"SUMMARY;LANGUAGE=en-us:"+t,"TRANSP:TRANSPARENT","END:VEVENT"];return B&&H.splice(4,0,B),H=H.join(r),n.push(H),H},download:function(e,t){if(n.length<1)return!1;t=void 0!==t?t:".ics",e=void 0!==e?e:"calendar";var a,l=i+r+n.join(r)+o;if(-1===navigator.userAgent.indexOf("MSIE 10"))a=new Blob([l]);else{var u=new BlobBuilder;u.append(l),a=u.getBlob("text/x-vCalendar;charset="+document.characterSet)}return saveAs(a,e+t),l},build:function(){return!(n.length<1)&&i+r+n.join(r)+o}}}console.log("Unsupported Browser")}};
+
+
+
+var k = document.getElementsByTagName('a');
+var cal = ics();
+
+
+var rrule = {
+	"freq" : "YEARLY",
+	"count" : 100,
+	"interval": 1
+}
+
+for(i =0;i<k.length;i++) {
+	try {
+		var href = k[i].getAttribute('href');
+		var dtc = k[i].getAttribute('data-tooltip-content');
+		if(href != null && dtc != null) {
+			var name = dtc.split('(')[0];
+			var birthday = dtc.split('(')[1].split(')')[0];
+			if(map[birthday.toLowerCase()]) {
+				birthday = map[birthday.toLowerCase()];
+			}
+			var m = birthday.split('/')[0];
+			var d = birthday.split('/')[1];
+			var y = year;
+			
+			cal.addEvent(name+"'s Birthday", name+"'s Birthday", href, m+"/"+d+"/"+y, m+"/"+d+"/"+y);
+			
+		} // end-if
+		
+		
+	} catch(e) {
+		console.log(e);
+	}
+} // end of Loop
+
+cal.download("fb_birthday_cal_maker");
