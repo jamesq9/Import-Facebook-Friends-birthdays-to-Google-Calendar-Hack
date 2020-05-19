@@ -1,7 +1,7 @@
 # import your Facebook friends birthdays to Google or any other Calendar (Hack)
-using this small hack you can export your Facebook friends birthday List to a ics calendar file and import it to Google or any other calendar of your choice using this small hack
+using this small hack you can export your Facebook friends birthday List to a ics calendar file and import it to Google or any other calendar of your choice
 
-Before you get started Note that this is a hack, therefore understand that Facebook doesn't really approve of this method and anytime you do anything of this sort, remember that malicious code can harm you and might compromise your account, so do it only if you understand what you're doing.
+Before you get started Note that this is a hack, therefore understand that Facebook doesn't really approve of this method and anytime you do anything of this sort, remember that a malicious code can harm you and might compromise your account or get access to your personal data, so do this only if you understand what you're doing  and PLEASE STOP COPY PASTING CODE IF YOU DO NOT UNDERSTAND WHAT ITS DOING!!! 
 
 
 Now to get started follow these steps:
